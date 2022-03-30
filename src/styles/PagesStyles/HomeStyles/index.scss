@@ -1,1 +1,40 @@
-.home {}
+@import '../../../shared/styles/index.scss';
+
+@import './CatalogStyles.scss';
+@import './SavedListStyles.scss';
+
+.home {
+    &.responsive-md {
+        padding: 0;
+    }
+
+    .home-sub-header {
+        ul {
+            width: fit-content;
+            margin: auto;
+            @include setFlex($align: center);
+
+            li {
+                a {
+                    color: #000;
+                    padding: 1rem;
+                    width: 150px;
+                    text-align: center;
+                    font-weight: 500;
+                    display: inline-block;
+                    background: #fff;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    transition: all .25s linear;
+                    border-radius: $border-radius-sm;
+                }
+
+                &.active {
+                    a {
+                        color: #fff;
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+    }
+}

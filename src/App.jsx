@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 // styles
 import "./shared/styles/App.scss";
+import SavedList from "./components/HomeComponents/SavedList";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/favourities" element={<SavedList />} />
           </Routes>
         </Layout>
       </div>

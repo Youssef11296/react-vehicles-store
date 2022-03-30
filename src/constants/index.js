@@ -1,0 +1,36 @@
+export const THEME_OPTIONS = {
+  DEFAULT: 'DEFAULT',
+  SECONDARY: 'SECONDARY',
+  RECOMMENDED: 'RECOMMENDED',
+  DARK: 'DARK',
+};
+
+export const VEHICLE_TYPES = {
+  CAR: 'CAR',
+  BYCLE: 'BYCLE',
+};
+
+export const VEHICLE_MODELS = {
+  VERY_OLD: 1980,
+  OLD: 2000,
+  MODERN: 2010,
+  LAST: 2020,
+};
+
+export const NAVS = {
+  HOME: {
+    CATALOG: 'CATALOG',
+    BRANDS: 'BRANDS',
+    RECOMMENDATIONS: 'RECOMMENDATIONS',
+  },
+  ABOUT: {},
+};
+
+export const VEHICLE_BRANDS = {
+  BMW: 'BMW',
+  LANCER: 'LANCER',
+  FERARI: 'FERARI',
+  CHEERVORLET: 'CHEERVORLET',
+};
+
+export const MEDIA_QUERIES = {MD: 1200, SM: 768};

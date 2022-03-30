@@ -7,7 +7,6 @@ import "../styles/WidgetsStyles/Header.scss";
 const Header = () => {
   return (
     <header>
-      <h1 className="logo">Logo</h1>
       <nav>
         <ul>
           <li>
@@ -15,6 +14,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/favourities">Saved</Link>
           </li>
         </ul>
       </nav>

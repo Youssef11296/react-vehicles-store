@@ -1,0 +1,78 @@
+.saved-list {
+    padding: 1rem;
+
+    &.responsive-md {
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .catalog-content {
+        width: 100%;
+        margin-top: 1rem;
+        @include setFlex($justify: space-between);
+
+    }
+
+    .products-grid {
+        margin-top: 2rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+
+        .product-card {
+            padding: .5rem;
+            border-radius: $border-radius-sm;
+            box-shadow: $box-shadow-card;
+
+            .saved-item {
+                .heart {
+                    color: red;
+                }
+            }
+
+            img {
+                width: 50px;
+                height: 60%;
+                object-fit: cover;
+            }
+
+            .basic-info {
+                @include setFlex($justify: space-between, $align: center);
+
+                .vehicle-model {
+                    font-weight: 500;
+                    opacity: .6;
+
+                    span {
+                        &:nth-child(2) {
+                            margin: 0 .5rem;
+                        }
+                    }
+                }
+            }
+
+            .vehicle-describtion {
+                margin: 1rem 0;
+                font-weight: 500;
+                opacity: .8;
+            }
+
+            .vehicle-price {
+                font-weight: 800;
+            }
+
+            .product-options {
+                width: 100%;
+                margin-left: auto;
+                text-align: end;
+
+                .heart {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

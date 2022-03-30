@@ -1,1 +1,1 @@
-// All home page components
+export {default as Catalog} from './Catalog';
