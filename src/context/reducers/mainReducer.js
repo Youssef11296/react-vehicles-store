@@ -1,10 +1,16 @@
 // action types
+import {VEHICLE_BRANDS, VEHICLE_MODELS, VEHICLE_TYPES} from '../../constants';
 import * as actionTypes from '../actions/actionTypes';
 
 // initial state
 const initialState = {
   data: null,
   savedList: [],
+  favs: {
+    type: VEHICLE_TYPES.CAR,
+    model: VEHICLE_MODELS.MODERN,
+    brand: VEHICLE_BRANDS.BMW,
+  },
 };
 
 // reducer
@@ -21,6 +27,8 @@ export const mainReducer = (state = initialState, action) => {
           vehicle => vehicle.id !== action.payload.id
         ),
       };
+    case actionTypes.SET_FAVS:
+      return {...state, favs: action.payload};
     default:
       return {...state};
   }

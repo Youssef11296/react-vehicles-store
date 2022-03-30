@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# App Overview
+
+It's just a simple app that display some store of the vehicles where the user can select and save his favourities.
+
+# Main Dependencies & Techs
+
+- React (Popular JavaScript library)
+
+- Redux (State management tool)
+
+- React router dom (React routing lib)
+
+- Sass (CSS pre-processor)
+
+- Antd design (Design library)
+
 ## Available Scripts
 
 In the project directory, you can run:

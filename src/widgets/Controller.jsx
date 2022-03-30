@@ -20,27 +20,9 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { DownOutlined, HomeOutlined, UpOutlined } from "@ant-design/icons";
+import { setFavs } from "../context/actions";
 
 const Controller = () => {
-  // local states
-  const [favs, setFavs] = useState({
-    ui: {
-      theme: THEME_OPTIONS.DEFAULT,
-    },
-    options: {
-      vehicleType: VEHICLE_TYPES.CAR,
-      vehicleModel: VEHICLE_MODELS.VERY_OLD,
-      vehicleBrand: VEHICLE_BRANDS.BMW,
-    },
-  });
-
-  const [isExpanded, setIsExpanded] = useState({
-    theme: false,
-    type: false,
-    model: false,
-    brand: false,
-  });
-
   // local constants
   const SIDEBAR_SECTIONS = {
     THEME: "THEME",
@@ -49,38 +31,6 @@ const Controller = () => {
     BRAND: "BRAND",
   };
 
-  // set favs handlers
-  const setThemeHandler = (theme) => {
-    setFavs({ ...favs, ui: { theme } });
-  };
-
-  const setTypeHandler = (type) => {
-    setFavs({ ...favs, options: { ...favs.options, type } });
-  };
-
-  const setModelHandler = (model) => {
-    setFavs({ ...favs, options: { ...favs.options, model } });
-  };
-
-  const setBrandHandler = (brand) => {
-    setFavs({ ...favs, options: { ...favs.options, brand } });
-  };
-
-  // expanding handler
-  const expandHandler = (sectionName) => {
-    switch (sectionName) {
-      case SIDEBAR_SECTIONS.THEME:
-        return setIsExpanded({ ...isExpanded, theme: !isExpanded.theme });
-      case SIDEBAR_SECTIONS.TYPE:
-        return setIsExpanded({ ...isExpanded, type: !isExpanded.type });
-      case SIDEBAR_SECTIONS.MODEL:
-        return setIsExpanded({ ...isExpanded, model: !isExpanded.model });
-      case SIDEBAR_SECTIONS.BRAND:
-        return setIsExpanded({ ...isExpanded, brand: !isExpanded.brand });
-      default:
-        return { ...isExpanded };
-    }
-  };
   // dispatcher
   const dispatcher = useDispatch();
 
@@ -103,9 +53,27 @@ const Controller = () => {
 
   const { Option } = Select;
 
-  function handleChange(value) {
+  // selectors
+  const favs = useSelector((state) => state.main.favs);
+
+  function handleBrandChange(value) {
     console.log(`selected ${value}`);
+
+    dispatcher(setFavs({ ...favs, brand: value }));
   }
+
+  function handleTypeChange(value) {
+    console.log(`selected ${value}`);
+
+    dispatcher(setFavs({ ...favs, type: value }));
+  }
+  function handleModelChange(value) {
+    console.log(`selected ${value}`);
+
+    dispatcher(setFavs({ ...favs, model: value }));
+  }
+
+  console.log({ favs });
 
   // window size
   const windowSize = useWindowSize();
@@ -120,16 +88,12 @@ const Controller = () => {
               <Col className="gutter-row" span={6} xs={24} xl={8}>
                 <div className="vehicle-type">
                   <Select
-                    defaultValue="lucy"
+                    defaultValue={VEHICLE_TYPES.CAR}
                     style={{ width: 120 }}
-                    onChange={handleChange}
+                    onChange={handleTypeChange}
                   >
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
+                    <Option value="Car">Car</Option>
+                    <Option value="Bycle">Bycle</Option>
                   </Select>
                 </div>
               </Col>
@@ -137,16 +101,19 @@ const Controller = () => {
               <Col className="gutter-row" span={6} xs={24} xl={8}>
                 <div className="model-year">
                   <Select
-                    defaultValue="lucy"
+                    defaultValue={VEHICLE_MODELS.MODERN}
                     style={{ width: 120 }}
-                    onChange={handleChange}
+                    onChange={handleModelChange}
                   >
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
+                    <Option value={VEHICLE_MODELS.MODERN}>
+                      {VEHICLE_MODELS.MODERN}
                     </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
+                    <Option value={VEHICLE_MODELS.OLD}>
+                      {VEHICLE_MODELS.VERY_OLD}
+                    </Option>
+                    <Option value={VEHICLE_MODELS.LAST}>
+                      {VEHICLE_MODELS.LAST}
+                    </Option>
                   </Select>
                 </div>
               </Col>
@@ -154,16 +121,19 @@ const Controller = () => {
               <Col className="gutter-row" span={6} xs={24} xl={8}>
                 <div className="model-brand">
                   <Select
-                    defaultValue="lucy"
+                    defaultValue={VEHICLE_BRANDS.BMW}
                     style={{ width: 120 }}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                   >
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
+                    <Option value={VEHICLE_BRANDS.BMW}>
+                      {VEHICLE_BRANDS.BMW}
                     </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
+                    <Option value={VEHICLE_BRANDS.FERARI}>
+                      {VEHICLE_BRANDS.FERARI}
+                    </Option>
+                    <Option value={VEHICLE_BRANDS.LANCER}>
+                      {VEHICLE_BRANDS.LANCER}
+                    </Option>
                   </Select>
                 </div>
               </Col>

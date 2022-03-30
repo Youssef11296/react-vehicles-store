@@ -26,14 +26,12 @@ export const unSaveVehicle = vahicle => {
 // shared action
 
 //  favs: (theme, type, model, brand)
-export const setFavs = (theme, type, model, brand) => {
+export const setFavs = favs => {
+  console.log ('SET FAVS!');
   return {
     type: actionTypes.SET_FAVS,
     payload: {
-      theme,
-      type,
-      model,
-      brand,
+      favs,
     },
   };
 };
